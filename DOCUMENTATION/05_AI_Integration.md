@@ -1,7 +1,7 @@
 # 05 – AI Integration
 
 ## Provider and workflow
-When `GEMINI_API_KEY` is present, the backend calls Gemini 2.0 Flash (`generateContent`) and requests JSON containing category, department, priority and short summary. The prompt asks the model to select from the application's category list and return a suggested department.
+When `GEMINI_API_KEY` is present, the backend calls gemini-3.5-flash-lite (`generateContent`) and requests JSON containing category, department, priority and short summary. The prompt asks the model to select from the application's category list and return a suggested department.
 
 ## Human safeguards
 - AI output is a suggestion only. CMO staff remain responsible for official priority and department assignment.
