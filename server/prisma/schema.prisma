@@ -1,0 +1,138 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CITIZEN
+  CMO_ADMIN
+  OFFICER
+}
+
+enum Status {
+  SUBMITTED
+  UNDER_REVIEW
+  IN_PROGRESS
+  RESOLVED
+  REOPENED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  mobile       String?
+  passwordHash String
+  role         Role     @default(CITIZEN)
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  grievances   Grievance[] @relation("CitizenGrievances")
+  history      GrievanceHistory[]
+
+  createdAt    DateTime @default(now())
+}
+
+model Department {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String
+
+  users       User[]
+  grievances  Grievance[]
+}
+
+model Grievance {
+  id           String   @id @default(cuid())
+  referenceNo  String   @unique
+
+  citizenId    String
+  citizen      User     @relation("CitizenGrievances", fields: [citizenId], references: [id])
+
+  district     String
+  category     String
+  subject      String
+  description  String
+
+  aiSummary    String?
+  aiDepartment String?
+  aiPriority   Priority?
+
+  priority     Priority @default(MEDIUM)
+  status       Status   @default(SUBMITTED)
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  officerRemarks String?
+  actionReport   String?
+
+  attachments  Attachment[]
+  history      GrievanceHistory[]
+  feedback     Feedback?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model GrievanceHistory {
+  id          String @id @default(cuid())
+
+  grievanceId String
+  grievance   Grievance @relation(fields: [grievanceId], references: [id], onDelete: Cascade)
+
+  status      Status
+  remarks     String?
+
+  actorId     String
+  actor       User @relation(fields: [actorId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+model Attachment {
+  id           String @id @default(cuid())
+
+  grievanceId  String
+  grievance    Grievance @relation(fields: [grievanceId], references: [id], onDelete: Cascade)
+
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+
+  createdAt    DateTime @default(now())
+}
+
+model Feedback {
+  id          String @id @default(cuid())
+
+  grievanceId String @unique
+  grievance   Grievance @relation(fields: [grievanceId], references: [id], onDelete: Cascade)
+
+  rating      Int
+  comments    String?
+
+  createdAt   DateTime @default(now())
+}
+
+model ContactEnquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}

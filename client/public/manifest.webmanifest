@@ -1,0 +1,10 @@
+{
+  "name": "CM Kerala Public Grievance Redressal Portal",
+  "short_name": "CM Kerala",
+  "description": "Demonstration portal for submitting and tracking public-service grievances.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f2eb",
+  "theme_color": "#145b46",
+  "icons": [{"src":"/kerala-civic.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}

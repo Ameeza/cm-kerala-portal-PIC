@@ -1,0 +1,4 @@
+Kerala district boundary GeoJSON source:
+https://github.com/geohacker/kerala
+File: geojsons/district.geojson
+The repository describes its Kerala boundary data as based on DataMeet maps. Verify source licensing and boundaries for your intended use. This is a community data source, not an official Government of Kerala or Survey of India cadastral/administrative publication.
