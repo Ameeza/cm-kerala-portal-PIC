@@ -28,7 +28,7 @@ Node.js 20+, npm, PostgreSQL 14+.
 
 ## Run locally
 1. Install PostgreSQL and create a database named `cmkerala`.
-2. Copy `.env.example` to `server/.env` and set `DATABASE_URL`, `JWT_SECRET`, `CLIENT_ORIGIN`, and optionally `GEMINI_API_KEY`.
+2. Copy `.env.example` to `server/.env` and set `DATABASE_URL`, `JWT_SECRET`, `CLIENT_ORIGIN`, and  `GEMINI_API_KEY`.
 3. Install dependencies:
    ```bash
    npm install
@@ -63,7 +63,7 @@ All demo accounts use password `Demo@12345`:
 Seed data is fictional. Create a citizen account or log in as the demo citizen to submit a sample grievance.
 
 ## AI configuration
-Set `GEMINI_API_KEY` in `server/.env` to enable Gemini 2.0 Flash grievance analysis. Without a key, the API returns a deterministic keyword-based fallback and explicitly labels it `Local keyword fallback (not AI)`. Do not describe fallback mode as completed AI integration. AI output is advisory and must be reviewed by CMO staff.
+Set `GEMINI_API_KEY` in `server/.env` to enable gemini-3.5-flash-lite grievance analysis. Without a key, the API returns a deterministic keyword-based fallback and explicitly labels it `Local keyword fallback (not AI)`. Do not describe fallback mode as completed AI integration. AI output is advisory and must be reviewed by CMO staff.
 
 ## Deployment outline
 - Database: create a managed PostgreSQL database (for example Neon) and use its connection string as `DATABASE_URL`.
