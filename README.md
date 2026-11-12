@@ -58,6 +58,13 @@ Node.js 20+, npm, PostgreSQL 14+.
 All demo accounts use password `Demo@12345`:
 - CMO admin: `admin@cmkerala.demo`
 - Department officer (Public Works): `officer@cmkerala.demo`
+- Transport	transport: 'officer@cmkerala.demo'
+- Water Resources:	'water.officer@cmkerala.demo'
+- Power:	'power.officer@cmkerala.demo'
+- General Education: 'education.officer@cmkerala.demo'
+- Health: 	'health.officer@cmkerala.demo'
+- Local Self Government: 'localgov.officer@cmkerala.demo'
+- Revenue:	'revenue.officer@cmkerala.demo
 - Citizen: `citizen@cmkerala.demo`
 
 Seed data is fictional. Create a citizen account or log in as the demo citizen to submit a sample grievance.
